@@ -19,6 +19,7 @@
 // IN THE SOFTWARE.
 
 #include <cmath>
+#include <fstream>
 
 #include "libmv/numeric/numeric.h"
 #include "libmv/multiview/projection.h"
@@ -111,6 +112,43 @@ NViewDataSet NRealisticCamerasFull(int nviews, int npoints,
     d.x_ids[i] = all_point_ids;
   }
   return d;
+}
+
+void NViewDataSet::ExportToPLY(
+  const std::string & out_file_name)const {
+  std::ofstream outfile;
+  outfile.open(out_file_name.c_str(), std::ios_base::out);
+  if (outfile.is_open()) {
+    outfile << "ply"
+     << "\n" << "format ascii 1.0"
+     << "\n" << "comment NViewDataSet export"
+     << "\n" << "comment It shows 3D point structure and cameras"
+     << "\n" << "element vertex " << X.cols() + t.size()
+     << "\n" << "property float x"
+     << "\n" << "property float y"
+     << "\n" << "property float z"
+     << "\n" << "property uchar red"
+     << "\n" << "property uchar green"
+     << "\n" << "property uchar blue"
+     << "\n" << "end_header" << "\n";
+    
+    //-- Export 3D point cloud
+    for(size_t i = 0; i < X.cols(); ++i)
+    {
+      // Exports the point position and point color
+      outfile << X.col(i).transpose()
+        << " " << "255 255 255" << "\n";
+    }
+
+    //-- Export 3D camera position t = -RC
+    for(size_t i = 0; i < t.size(); ++i)
+    {
+      // Exports the camera position and camera color
+      outfile << (-R[i].transpose()*t[i]).transpose()
+        << " " << "0 255 0" << "\n";
+    }
+    outfile.close();
+  }
 }
 
 

@@ -26,7 +26,6 @@ MACRO (LIBMV_TEST NAME EXTRA_LIBS)
                           ${EXTRA_LIBS} # Extra libs MUST be first.
                           libmv_test_main 
                           gtest 
-                          glog
                           gflags
                           pthread)
     SET_TARGET_PROPERTIES(${NAME}_test PROPERTIES 

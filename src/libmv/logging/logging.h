@@ -21,7 +21,14 @@
 #ifndef LIBMV_LOGGING_LOGGING_H
 #define LIBMV_LOGGING_LOGGING_H
 
-#include "third_party/glog/src/glog/logging.h"
+#include <iostream>
+//#include "third_party/glog/src/glog/logging.h"
+
+#define LOG(INFO) std::cout
+#define VLOG(INFO) std::cout
+#define CHECK(val1)
+#define DCHECK_EQ(val1, val2)
+#define DCHECK_GE(val1, val2)
 
 #define LG LOG(INFO)
 #define V0 LOG(INFO)

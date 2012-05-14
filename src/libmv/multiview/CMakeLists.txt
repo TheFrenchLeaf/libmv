@@ -10,7 +10,7 @@ FILE(GLOB MULTIVIEW_HDRS *.h)
 
 ADD_LIBRARY(multiview ${MULTIVIEW_SRC} ${MULTIVIEW_HDRS})
 
-TARGET_LINK_LIBRARIES(multiview glog numeric )
+TARGET_LINK_LIBRARIES(multiview  numeric )
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(multiview PROPERTIES DEBUG_POSTFIX "_d")
@@ -70,3 +70,4 @@ MULTIVIEW_TEST(euclidean_kernel)
 MULTIVIEW_TEST(euclidean_parameterization)
 MULTIVIEW_TEST(robust_euclidean)
 MULTIVIEW_TEST(rotation_parameterization)
+MULTIVIEW_TEST(trifocal)

@@ -70,6 +70,9 @@ struct NViewDataSet {
     }
   }
   // TODO(keir): Add gaussian jitter functions.
+
+  /// Export in PLY the point structure and camera and camera looking dir.
+  void ExportToPLY(const std::string & out_file_name) const;
 };
 
 struct nViewDatasetConfigator
@@ -88,6 +91,7 @@ struct nViewDatasetConfigator
                           int cx = 500,   int cy  = 500,
                           double distance = 1.5,
                           double jitter_amount = 0.01 );
+
 };
 
 NViewDataSet NRealisticCamerasFull(int nviews, int npoints,

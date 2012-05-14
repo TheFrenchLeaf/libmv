@@ -55,8 +55,8 @@ bool EuclideanResection(const Mat &x_image,
                         Mat3 *R, Vec3 *t,
                         ResectionMethod method) {
   CHECK(x_image.rows() == 2 || x_image.rows() == 3)
-    << "Invalid size for x_image: "
-    << x_image.rows() << "x" << x_image.cols();
+    //<< "Invalid size for x_image: "
+    //<< x_image.rows() << "x" << x_image.cols();
 
   Mat2X x_camera;
   if (x_image.rows() == 2) {
